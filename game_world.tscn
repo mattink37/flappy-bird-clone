@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsh73glbwvpck"]
+
+[ext_resource type="Script" path="res://backgroundMover.gd" id="1_jywmg"]
+[ext_resource type="PackedScene" uid="uid://dghy18m04efp2" path="res://Player.tscn" id="1_msbob"]
+
+[node name="GameWorld" type="Node2D"]
+script = ExtResource("1_jywmg")
+
+[node name="Player" parent="." instance=ExtResource("1_msbob")]
