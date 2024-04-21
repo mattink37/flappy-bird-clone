@@ -49,7 +49,7 @@ func spawnPipe():
 
 	get_node("Pipes").add_child(bottomPipe)
 	bottomPipe.position.x = 550
-	bottomPipe.position.y = randi_range(100, 360)
+	bottomPipe.position.y = randi_range(100, 315)
 	
 	get_node("Pipes").add_child(topPipe)
 	topPipe.position.x = bottomPipe.position.x
