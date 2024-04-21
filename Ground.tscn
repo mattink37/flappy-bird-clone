@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cchyfxqxpivll"]
+
+[ext_resource type="Texture2D" uid="uid://cwuvdo53c4lwm" path="res://assets/base.png" id="1_y26hq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4fpu"]
+size = Vector2(336, 111)
+
+[node name="Ground" type="Node2D"]
+z_as_relative = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 5
+z_as_relative = false
+texture = ExtResource("1_y26hq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_q4fpu")
