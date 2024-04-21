@@ -44,3 +44,4 @@ func spawnPipe():
 	var newPipe := pipeScene.instantiate()
 	get_node("Pipes").add_child(newPipe)
 	newPipe.position.x = 550
+	newPipe.position.y = randi_range(100, 380)
