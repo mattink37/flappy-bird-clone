@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dghy18m04efp2"]
+[gd_scene load_steps=8 format=3 uid="uid://dghy18m04efp2"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_2wq6s"]
 [ext_resource type="Texture2D" uid="uid://boo3c1m4qmewo" path="res://assets/yellowbird-upflap.png" id="2_bnipg"]
@@ -28,6 +28,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_runya"]
 radius = 6.5
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_srl0s"]
+radius = 280.713
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 99
 scale = Vector2(0.05, 0.05)
@@ -43,3 +46,11 @@ frame_progress = 0.144766
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(40, 40)
 shape = SubResource("CircleShape2D_runya")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(1, 1)
+shape = SubResource("CircleShape2D_srl0s")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

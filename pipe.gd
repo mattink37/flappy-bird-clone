@@ -1,6 +1,7 @@
 extends Node2D
 
 var speed: float = 85
+var freeze = false
 
 func _ready():
 	var pipeTimer: Timer = Timer.new()
@@ -10,11 +11,11 @@ func _ready():
 	pipeTimer.start()
 
 func _process(delta):
-	position.x -= speed * delta
+	if !freeze:
+		position.x -= speed * delta
+
+func toggleFreeze():
+	freeze = true
 
 func destroy():
 	self.queue_free()
-
-func _on_area_2d_body_entered(body):
-	if body.is_in_group("player"):
-		print('pipe')

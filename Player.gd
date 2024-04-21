@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal player_died
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
@@ -12,7 +14,7 @@ func _ready():
 	add_child(jumpTimer)
 	jumpTimer.one_shot = true
 	jumpTimer.wait_time = 0.3
-
+ 
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -29,3 +31,7 @@ func simulateBirdFall():
 	var x = 2
 	if rotation_degrees > -90 and rotation_degrees < 90 and jumpTimer.is_stopped():
 		rotation_degrees += x ** 2
+
+func _on_area_2d_body_entered(body):
+	if body.is_in_group('Killer'):
+		player_died.emit()
