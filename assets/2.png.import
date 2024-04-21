@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dp1n3bf24kc87"
-path="res://.godot/imported/flappy-background.png-5e9642d00d5fd23328f66022696f0033.ctex"
+uid="uid://dcvqyenf1dkcn"
+path="res://.godot/imported/2.png-f79589217c9a74fd0d3207c8643de526.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://flappy-background.png"
-dest_files=["res://.godot/imported/flappy-background.png-5e9642d00d5fd23328f66022696f0033.ctex"]
+source_file="res://assets/2.png"
+dest_files=["res://.godot/imported/2.png-f79589217c9a74fd0d3207c8643de526.ctex"]
 
 [params]
 

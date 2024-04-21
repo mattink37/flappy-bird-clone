@@ -1,9 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://dghy18m04efp2"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_2wq6s"]
-[ext_resource type="Texture2D" uid="uid://bkc16pcwghr1w" path="res://flappy.png" id="1_r2jiv"]
+[ext_resource type="Texture2D" uid="uid://boo3c1m4qmewo" path="res://assets/yellowbird-upflap.png" id="2_bnipg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_runya"]
+radius = 6.5
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 99
@@ -15,4 +16,5 @@ scale = Vector2(40, 40)
 shape = SubResource("CircleShape2D_runya")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_r2jiv")
+scale = Vector2(20, 20)
+texture = ExtResource("2_bnipg")

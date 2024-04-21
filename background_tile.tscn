@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b6lnnhyhdb2w1"]
 
-[ext_resource type="Texture2D" uid="uid://dp1n3bf24kc87" path="res://flappy-background.png" id="1_fk441"]
+[ext_resource type="Texture2D" uid="uid://dp1n3bf24kc87" path="res://assets/flappy-background.png" id="1_fk441"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7drm0"]
 

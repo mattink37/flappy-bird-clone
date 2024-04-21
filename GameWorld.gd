@@ -44,6 +44,7 @@ func spawnPipe():
 	var bottomPipe := pipeScene.instantiate()
 	var topPipe := pipeScene.instantiate()
 	var pipeHeight = topPipe.get_node('PipeSprite').texture.get_height()
+	var vDistBetweenPipes = 125
 	topPipe.set_rotation_degrees(180)
 
 	get_node("Pipes").add_child(bottomPipe)
@@ -52,4 +53,4 @@ func spawnPipe():
 	
 	get_node("Pipes").add_child(topPipe)
 	topPipe.position.x = bottomPipe.position.x
-	topPipe.position.y = bottomPipe.position.y - 100 - pipeHeight
+	topPipe.position.y = bottomPipe.position.y - vDistBetweenPipes - pipeHeight
