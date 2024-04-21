@@ -42,4 +42,4 @@ scale = Vector2(20, 20)
 sprite_frames = SubResource("SpriteFrames_2de4v")
 animation = &"flying"
 autoplay = "flying"
-frame_progress = 0.699822
+frame_progress = 0.225347
