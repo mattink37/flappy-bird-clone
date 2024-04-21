@@ -1,10 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://dghy18m04efp2"]
+[gd_scene load_steps=7 format=3 uid="uid://dghy18m04efp2"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_2wq6s"]
 [ext_resource type="Texture2D" uid="uid://boo3c1m4qmewo" path="res://assets/yellowbird-upflap.png" id="2_bnipg"]
+[ext_resource type="Texture2D" uid="uid://cmbb83vqpdsgp" path="res://assets/yellowbird-midflap.png" id="3_oolav"]
+[ext_resource type="Texture2D" uid="uid://c4txuubxuvvdn" path="res://assets/yellowbird-downflap.png" id="4_t72p5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_runya"]
 radius = 6.5
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2de4v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_oolav")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_t72p5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_oolav")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_bnipg")
+}],
+"loop": true,
+"name": &"flying",
+"speed": 12.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 99
@@ -15,6 +37,9 @@ script = ExtResource("1_2wq6s")
 scale = Vector2(40, 40)
 shape = SubResource("CircleShape2D_runya")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(20, 20)
-texture = ExtResource("2_bnipg")
+sprite_frames = SubResource("SpriteFrames_2de4v")
+animation = &"flying"
+autoplay = "flying"
+frame_progress = 0.699822
