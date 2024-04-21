@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1ilpg664klfr"]
+
+[ext_resource type="PackedScene" uid="uid://d4btfe2v2goun" path="res://pipe.tscn" id="1_eossg"]
+[ext_resource type="Script" path="res://PipePairContainer.gd" id="1_re6h6"]
+
+[node name="PipePairContainer" type="Node2D"]
+script = ExtResource("1_re6h6")
+
+[node name="UpperPipe" parent="." instance=ExtResource("1_eossg")]
+
+[node name="LowerPipe" parent="." instance=ExtResource("1_eossg")]

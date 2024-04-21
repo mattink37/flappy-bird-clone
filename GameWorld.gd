@@ -5,8 +5,9 @@ var bg2
 var bgWidth
 var bgSpeed = 20  # Speed of the background movement in pixels per second.
 var backgroundScene: PackedScene = preload("res://background_tile.tscn")
-var pipeScene: PackedScene = preload("res://pipe.tscn")
+var pipePairContainer: PackedScene = preload("res://PipePairContainer.tscn")
 @onready var pipeTimer: Timer
+var pipes
 var freeze = false
 
 
@@ -38,26 +39,15 @@ func backdropHandler(delta):
 		bg2.position.x = bgWidth - 1
 		
 func pipeHandler():
+	pipes = get_node("Pipes")
 	pipeTimer = Timer.new()
 	add_child(pipeTimer)
 	pipeTimer.wait_time = 1.75
-	pipeTimer.connect("timeout", spawnPipe)
+	pipeTimer.connect("timeout", spawnPipePair)
 	pipeTimer.start()
 		
-func spawnPipe():
-	var bottomPipe := pipeScene.instantiate()
-	var topPipe := pipeScene.instantiate()
-	var pipeHeight = topPipe.get_node('PipeSprite').texture.get_height()
-	var vDistBetweenPipes = 125
-	topPipe.set_rotation_degrees(180)
-
-	get_node("Pipes").add_child(bottomPipe)
-	bottomPipe.position.x = 550
-	bottomPipe.position.y = randi_range(100, 315)
+func spawnPipePair(): 
+	pipes.add_child(pipePairContainer.instantiate())
 	
-	get_node("Pipes").add_child(topPipe)
-	topPipe.position.x = bottomPipe.position.x
-	topPipe.position.y = bottomPipe.position.y - vDistBetweenPipes - pipeHeight
-
 func _on_player_player_died():
 	freeze = true
