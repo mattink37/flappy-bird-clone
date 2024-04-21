@@ -41,7 +41,15 @@ func pipeHandler():
 	pipeTimer.start()
 		
 func spawnPipe():
-	var newPipe := pipeScene.instantiate()
-	get_node("Pipes").add_child(newPipe)
-	newPipe.position.x = 550
-	newPipe.position.y = randi_range(100, 380)
+	var bottomPipe := pipeScene.instantiate()
+	var topPipe := pipeScene.instantiate()
+	var pipeHeight = topPipe.get_node('PipeSprite').texture.get_height()
+	topPipe.set_rotation_degrees(180)
+
+	get_node("Pipes").add_child(bottomPipe)
+	bottomPipe.position.x = 550
+	bottomPipe.position.y = randi_range(100, 380)
+	
+	get_node("Pipes").add_child(topPipe)
+	topPipe.position.x = bottomPipe.position.x
+	topPipe.position.y = bottomPipe.position.y - 100 - pipeHeight
