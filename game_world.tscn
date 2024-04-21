@@ -10,3 +10,5 @@ script = ExtResource("1_jywmg")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.25, 1.25)
+
+[node name="Pipes" type="Node2D" parent="."]
