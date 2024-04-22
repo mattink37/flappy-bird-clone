@@ -9,3 +9,9 @@ script = ExtResource("1_re6h6")
 [node name="UpperPipe" parent="." instance=ExtResource("1_eossg")]
 
 [node name="LowerPipe" parent="." instance=ExtResource("1_eossg")]
+
+[node name="ScoreArea" type="Area2D" parent="."]
+z_index = 99
+z_as_relative = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea"]

@@ -1,16 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6lnnhyhdb2w1"]
+[gd_scene load_steps=2 format=3 uid="uid://b6lnnhyhdb2w1"]
 
 [ext_resource type="Texture2D" uid="uid://dp1n3bf24kc87" path="res://assets/flappy-background.png" id="1_fk441"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7drm0"]
 
 [node name="BackgroundTile" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_fk441")
-
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-gravity_scale = 1.66533e-16
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-shape = SubResource("RectangleShape2D_7drm0")
