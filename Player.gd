@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal player_died
+signal player_scored
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -33,5 +34,7 @@ func simulateBirdFall():
 		rotation_degrees += x ** 2
 
 func _on_area_2d_body_entered(body):
-	if body.is_in_group('Killer'):
+	if body.is_in_group('Player'):
+		pass
+	elif body.is_in_group('Killer'):
 		player_died.emit()

@@ -10,8 +10,10 @@ script = ExtResource("1_re6h6")
 
 [node name="LowerPipe" parent="." instance=ExtResource("1_eossg")]
 
-[node name="ScoreArea" type="Area2D" parent="."]
+[node name="ScoreArea" type="Area2D" parent="." groups=["Score"]]
 z_index = 99
 z_as_relative = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea"]
+
+[connection signal="body_entered" from="ScoreArea" to="." method="_on_score_area_body_entered"]

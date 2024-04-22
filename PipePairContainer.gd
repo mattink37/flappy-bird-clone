@@ -31,3 +31,9 @@ func positionPipes():
 	$ScoreArea/CollisionShape2D.shape = localScoreShape
 	localScoreShape.a = Vector2(topPipe.position.x, topPipe.position.y)
 	localScoreShape.b = Vector2(bottomPipe.position.x, bottomPipe.position.y)
+
+
+func _on_score_area_body_entered(body):
+	if body.is_in_group('Player'):
+		GlobalSignals.bodyEnteredScoreArea.emit()
+		print('score')

@@ -7,8 +7,5 @@ func _ready():
 	pipeTimer.connect("timeout", destroy)
 	pipeTimer.start()
 
-func _process(delta):
-	pass
-
 func destroy():
 	self.queue_free()
