@@ -36,4 +36,3 @@ func positionPipes():
 func _on_score_area_body_entered(body):
 	if body.is_in_group('Player'):
 		GlobalSignals.bodyEnteredScoreArea.emit()
-		print('score')

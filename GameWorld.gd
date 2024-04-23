@@ -9,11 +9,17 @@ var pipePairContainer: PackedScene = preload("res://PipePairContainer.tscn")
 @onready var pipeTimer: Timer
 var pipes
 var freeze = false
+var score = 0
 
 
 func _ready():
+	GlobalSignals.bodyEnteredScoreArea.connect(increaseScore)
 	pipeHandler()
 	backdropLoad()
+
+func increaseScore():
+	score += 1
+	print(score)
 
 func _process(delta):
 	if !freeze:
