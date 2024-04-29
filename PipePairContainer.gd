@@ -21,7 +21,7 @@ func positionPipes():
 	var vDistBetweenPipes = 125
 	topPipe.set_rotation_degrees(180)
 
-	bottomPipe.position.x = 250
+	bottomPipe.position.x = 435
 	bottomPipe.position.y = randi_range(100, 315)
 	
 	topPipe.position.x = bottomPipe.position.x

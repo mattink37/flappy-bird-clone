@@ -34,5 +34,13 @@ z_index = 100
 position = Vector2(0, 249)
 scale = Vector2(3, 1)
 
+[node name="DeathDialog" type="ConfirmationDialog" parent="."]
+title = "You Died!"
+initial_position = 2
+ok_button_text = "Play Again?"
+cancel_button_text = "Quit"
+
 [connection signal="player_died" from="Player" to="." method="_on_player_player_died"]
 [connection signal="player_died" from="Player" to="Pipes" method="_on_player_player_died"]
+[connection signal="canceled" from="DeathDialog" to="." method="_on_death_dialog_canceled"]
+[connection signal="confirmed" from="DeathDialog" to="." method="_on_death_dialog_confirmed"]

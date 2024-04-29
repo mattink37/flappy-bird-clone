@@ -11,6 +11,7 @@ var pipes
 var freeze = false
 var score = 0
 @onready var scoreLabel = $Score
+@onready var deathDialog = $DeathDialog
 
 func _ready():
 	GlobalSignals.bodyEnteredScoreArea.connect(increaseScore)
@@ -57,3 +58,13 @@ func spawnPipePair():
 	
 func _on_player_player_died():
 	freeze = true
+	deathDialog.add_theme_icon_override("close", Texture2D.new())
+	deathDialog.dialog_text = "You jumped through {score} pipes!".format({ "score": score })
+	deathDialog.show()
+
+func _on_death_dialog_confirmed():
+	get_tree().reload_current_scene()
+
+
+func _on_death_dialog_canceled():
+	get_tree().quit()

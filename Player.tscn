@@ -10,6 +10,14 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_oolav")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_oolav")
 }, {
 "duration": 1.0,
 "texture": ExtResource("4_t72p5")
@@ -41,7 +49,6 @@ scale = Vector2(20, 20)
 sprite_frames = SubResource("SpriteFrames_2de4v")
 animation = &"flying"
 autoplay = "flying"
-frame_progress = 0.144766
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(40, 40)

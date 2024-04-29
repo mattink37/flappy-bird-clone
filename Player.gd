@@ -5,10 +5,11 @@ signal player_scored
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-
+@onready var animSprite = $AnimatedSprite2D
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var jumpTimer
+var dead = false
 
 func _ready():
 	jumpTimer = Timer.new()
@@ -20,7 +21,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	
-	if Input.is_action_just_pressed("ui_accept", true):
+	if Input.is_action_just_pressed("ui_accept", true) and !dead:
 		jumpTimer.start()
 		set_rotation_degrees(-20)
 		velocity.y = JUMP_VELOCITY
@@ -37,4 +38,6 @@ func _on_area_2d_body_entered(body):
 	if body.is_in_group('Player'):
 		pass
 	elif body.is_in_group('Killer'):
+		dead = true
+		animSprite.animation = 'dead'
 		player_died.emit()
