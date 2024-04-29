@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://d4btfe2v2goun"]
+[gd_scene load_steps=3 format=3 uid="uid://d4btfe2v2goun"]
 
-[ext_resource type="Script" path="res://pipe.gd" id="1_kewdr"]
 [ext_resource type="Texture2D" uid="uid://2tf1prifhgeu" path="res://assets/pipe-green.png" id="2_gq2nn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3ifn"]
@@ -9,7 +8,6 @@ size = Vector2(48, 320)
 [node name="Pipe" type="StaticBody2D" groups=["Killer"]]
 z_index = 98
 z_as_relative = false
-script = ExtResource("1_kewdr")
 
 [node name="PipeCollisionShape" type="CollisionShape2D" parent="."]
 z_index = 4

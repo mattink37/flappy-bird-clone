@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var bottomPipe = $LowerPipe
 @onready var topPipe = $UpperPipe
+var pipeTimer: Timer
 var pipeHeight
 var speed: float = 85
 var freeze = false
@@ -9,6 +10,14 @@ var freeze = false
 func _ready():
 	pipeHeight = topPipe.get_node('PipeSprite').texture.get_height()
 	positionPipes()
+	pipeTimer = Timer.new()
+	add_child(pipeTimer)
+	pipeTimer.wait_time = 20
+	pipeTimer.connect("timeout", destroy)
+	pipeTimer.start()
+	
+func destroy():
+	self.queue_free()
 
 func _process(delta):
 	if !freeze:
@@ -16,6 +25,7 @@ func _process(delta):
 
 func toggleFreeze():
 	freeze = true
+	pipeTimer.paused = true
 
 func positionPipes():
 	var vDistBetweenPipes = 125

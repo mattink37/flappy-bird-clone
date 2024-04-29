@@ -2,21 +2,36 @@
 
 [ext_resource type="Script" path="res://GameWorld.gd" id="1_jywmg"]
 [ext_resource type="PackedScene" uid="uid://dghy18m04efp2" path="res://Player.tscn" id="1_msbob"]
-[ext_resource type="FontFile" uid="uid://c4gr6y5aj717a" path="res://assets/flappy-bird-font.ttf" id="2_3ebgl"]
+[ext_resource type="FontFile" uid="uid://2bd2igv8ub1c" path="res://assets/FFFFORWA.TTF" id="2_1q50v"]
 [ext_resource type="PackedScene" uid="uid://cchyfxqxpivll" path="res://Ground.tscn" id="3_axxr0"]
 [ext_resource type="Script" path="res://PipesHandlerGamerWorld.gd" id="4_wdtb7"]
 
 [node name="GameWorld" type="Node2D"]
 script = ExtResource("1_jywmg")
 
+[node name="GameStartLabel" type="Label" parent="."]
+z_index = 10
+offset_left = -72.0
+offset_top = -112.0
+offset_right = 72.0
+offset_bottom = -89.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_1q50v")
+text = "space to jump"
+horizontal_alignment = 1
+
 [node name="Score" type="Label" parent="."]
+visible = false
 z_index = 5
 offset_left = -61.0
 offset_top = -175.0
 offset_right = 63.0
 offset_bottom = -152.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("2_3ebgl")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_1q50v")
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -40,6 +55,9 @@ initial_position = 2
 ok_button_text = "Play Again?"
 cancel_button_text = "Quit"
 
+[node name="PipeSpawnTimer" type="Timer" parent="."]
+
+[connection signal="game_has_started" from="Player" to="." method="_on_player_game_has_started"]
 [connection signal="player_died" from="Player" to="." method="_on_player_player_died"]
 [connection signal="player_died" from="Player" to="Pipes" method="_on_player_player_died"]
 [connection signal="canceled" from="DeathDialog" to="." method="_on_death_dialog_canceled"]

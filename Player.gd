@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 signal player_died
 signal player_scored
+signal game_has_started
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -10,6 +11,7 @@ const JUMP_VELOCITY = -400.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var jumpTimer
 var dead = false
+var gameHasStarted = false
 
 func _ready():
 	jumpTimer = Timer.new()
@@ -18,16 +20,19 @@ func _ready():
 	jumpTimer.wait_time = 0.3
  
 func _physics_process(delta):
-	if not is_on_floor():
+	if not is_on_floor() and gameHasStarted:
 		velocity.y += gravity * delta
 	
 	if Input.is_action_just_pressed("ui_accept", true) and !dead:
+		gameHasStarted = true
+		game_has_started.emit()
 		jumpTimer.start()
 		set_rotation_degrees(-20)
 		velocity.y = JUMP_VELOCITY
 		
-	simulateBirdFall()
-	move_and_slide()
+	if gameHasStarted:
+		simulateBirdFall()
+		move_and_slide()
 	
 func simulateBirdFall():
 	var x = 2
