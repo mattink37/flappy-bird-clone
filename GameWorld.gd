@@ -10,7 +10,7 @@ var pipePairContainer: PackedScene = preload("res://PipePairContainer.tscn")
 var pipes
 var freeze = false
 var score = 0
-
+@onready var scoreLabel = $Score
 
 func _ready():
 	GlobalSignals.bodyEnteredScoreArea.connect(increaseScore)
@@ -19,7 +19,7 @@ func _ready():
 
 func increaseScore():
 	score += 1
-	print(score)
+	scoreLabel.text = str(score)
 
 func _process(delta):
 	if !freeze:
