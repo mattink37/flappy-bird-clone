@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var bottomPipe = $LowerPipe
 @onready var topPipe = $UpperPipe
+@onready var scoreSound = $ScoreSound
 var pipeTimer: Timer
 var pipeHeight
 var speed: float = 85
@@ -46,3 +47,5 @@ func positionPipes():
 func _on_score_area_body_entered(body):
 	if body.is_in_group('Player'):
 		GlobalSignals.bodyEnteredScoreArea.emit()
+		scoreSound.play()
+		

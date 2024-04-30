@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dghy18m04efp2"]
+[gd_scene load_steps=10 format=3 uid="uid://dghy18m04efp2"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_2wq6s"]
 [ext_resource type="Texture2D" uid="uid://boo3c1m4qmewo" path="res://assets/yellowbird-upflap.png" id="2_bnipg"]
 [ext_resource type="Texture2D" uid="uid://cmbb83vqpdsgp" path="res://assets/yellowbird-midflap.png" id="3_oolav"]
 [ext_resource type="Texture2D" uid="uid://c4txuubxuvvdn" path="res://assets/yellowbird-downflap.png" id="4_t72p5"]
+[ext_resource type="AudioStream" uid="uid://pcdajyb6bvqk" path="res://assets/audio/wing.ogg" id="5_n5n82"]
+[ext_resource type="AudioStream" uid="uid://bbqcrkh5a7q2d" path="res://assets/audio/hit.ogg" id="6_pkeub"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2de4v"]
 animations = [{
@@ -58,5 +60,11 @@ shape = SubResource("CircleShape2D_runya")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_srl0s")
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_n5n82")
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_pkeub")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

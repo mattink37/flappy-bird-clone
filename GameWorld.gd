@@ -59,7 +59,8 @@ func _on_player_player_died():
 	pipeSpawnTimer.paused = true
 	deathDialog.add_theme_icon_override("close", Texture2D.new())
 	deathDialog.dialog_text = "You jumped through {score} pipes!".format({ "score": score })
-	deathDialog.move_to_center()
+	deathDialog.position.x = get_viewport_rect().size.x / 2 - deathDialog.get_size_with_decorations().x / 2 - 15
+	deathDialog.position.y = get_viewport_rect().size.y / 2 - 100
 	deathDialog.show()
 
 func _on_death_dialog_confirmed():

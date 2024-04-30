@@ -12,6 +12,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var jumpTimer
 var dead = false
 var gameHasStarted = false
+@onready var jumpSound = $JumpSound
+@onready var deathSound = $DeathSound
 
 func _ready():
 	jumpTimer = Timer.new()
@@ -29,10 +31,14 @@ func _physics_process(delta):
 		jumpTimer.start()
 		set_rotation_degrees(-20)
 		velocity.y = JUMP_VELOCITY
+		jumpSound.play()
 		
 	if gameHasStarted:
 		simulateBirdFall()
-		move_and_slide()
+	else:
+		position.y = 1 + 10 * sin(3 * position.x)
+		print(position.y)
+	move_and_slide()
 	
 func simulateBirdFall():
 	var x = 2
@@ -40,9 +46,10 @@ func simulateBirdFall():
 		rotation_degrees += x ** 2
 
 func _on_area_2d_body_entered(body):
-	if body.is_in_group('Player'):
-		pass
-	elif body.is_in_group('Killer'):
+	if body.is_in_group('Killer'):
+		if !dead:
+			deathSound.play()
+			animSprite.animation = 'dead'
+			player_died.emit()
 		dead = true
-		animSprite.animation = 'dead'
-		player_died.emit()
+

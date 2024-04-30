@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1ilpg664klfr"]
+[gd_scene load_steps=4 format=3 uid="uid://b1ilpg664klfr"]
 
 [ext_resource type="PackedScene" uid="uid://d4btfe2v2goun" path="res://pipe.tscn" id="1_eossg"]
 [ext_resource type="Script" path="res://PipePairContainer.gd" id="1_re6h6"]
+[ext_resource type="AudioStream" uid="uid://cs0f8whoqh27l" path="res://assets/audio/point.ogg" id="3_t75vk"]
 
 [node name="PipePairContainer" type="Node2D"]
 script = ExtResource("1_re6h6")
@@ -15,5 +16,8 @@ z_index = 99
 z_as_relative = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea"]
+
+[node name="ScoreSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_t75vk")
 
 [connection signal="body_entered" from="ScoreArea" to="." method="_on_score_area_body_entered"]

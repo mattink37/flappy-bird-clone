@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://bsh73glbwvpck"]
+[gd_scene load_steps=7 format=3 uid="uid://bsh73glbwvpck"]
 
 [ext_resource type="Script" path="res://GameWorld.gd" id="1_jywmg"]
 [ext_resource type="PackedScene" uid="uid://dghy18m04efp2" path="res://Player.tscn" id="1_msbob"]
 [ext_resource type="FontFile" uid="uid://2bd2igv8ub1c" path="res://assets/FFFFORWA.TTF" id="2_1q50v"]
 [ext_resource type="PackedScene" uid="uid://cchyfxqxpivll" path="res://Ground.tscn" id="3_axxr0"]
 [ext_resource type="Script" path="res://PipesHandlerGamerWorld.gd" id="4_wdtb7"]
+
+[sub_resource type="Theme" id="Theme_yatbk"]
+default_font = ExtResource("2_1q50v")
+default_font_size = 12
 
 [node name="GameWorld" type="Node2D"]
 script = ExtResource("1_jywmg")
@@ -50,9 +54,14 @@ position = Vector2(0, 249)
 scale = Vector2(3, 1)
 
 [node name="DeathDialog" type="ConfirmationDialog" parent="."]
+canvas_item_default_texture_filter = 0
 title = "You Died!"
-initial_position = 2
+position = Vector2i(-104, 0)
+size = Vector2i(208, 100)
+theme = SubResource("Theme_yatbk")
 ok_button_text = "Play Again?"
+dialog_text = "testing 123 blah blah blah"
+dialog_close_on_escape = false
 cancel_button_text = "Quit"
 
 [node name="PipeSpawnTimer" type="Timer" parent="."]
